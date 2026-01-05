@@ -1,0 +1,20 @@
+#port => default = 8080이다. => 보안 설정(AWS) : port 허용
+#AWS는 80port만 허용 설정 8080 / 1521 / 3306(MySql, MariaDB) 포트 허용시켜야 한다.
+#MVC 설정
+spring:
+  mvc:
+    view:
+     prefix: /WEB-INF/views/
+     suffix: .jsp
+  datasource:
+    url: jdbc:oracle:thin:@//211.238.142.22:1521/XE
+    username: hr
+    password: happy
+    driver-class-name: oracle.jdbc.OracleDriver
+mybatis:
+  type-aliases-package: com.sist.web.vo
+  mapper-locations: mybatis/mapper/*.xml
+#MyBatis => 복잡한 SQL => Annotation / XML(JOIN, 동적 쿼리)
+#JPA => JOIN => CRUD
+#WebSocket 설정 / Kafka설정 / MSA 설정
+#Security : 람다식
