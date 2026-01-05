@@ -22,4 +22,9 @@ public class SeoulServiceImpl implements SeoulService{
 	public int seoulTotalPage(int contenttype) {
 		return mapper.seoulTotalPage(contenttype);
 	}
+	@Override
+	public SeoulVO seoulAttractionDetailData(int contentid) {
+		mapper.seoulAttractionHitIncrement(contentid);
+		return mapper.seoulAttractionDetailData(contentid);
+	}
 }

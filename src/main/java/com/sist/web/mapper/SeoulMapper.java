@@ -22,4 +22,22 @@ public interface SeoulMapper {
 	@Select("SELECT CEIL(COUNT(*) / 12.0) FROM seoultravel "
 			+ "WHERE contenttype=#{contenttype} ")
 	public int seoulTotalPage(int contenttype);
+	/*
+	<select id="seoulAttractionDetailData" resultMap="attMap" parameterType="int">
+ 		SELECT s.no, title, image1, address, x, y, infocenter, restdate, usetime, parking, msg 
+ 		FROM seoultravel s JOIN attraction a
+ 		ON s.contentid = a.contentid
+ 		AND s.contentid = #{contentid}
+ 	</select>
+ 	
+ 	<update id="seoulAttractionHitIncrement" parameterType="hashmap">
+ 		UPDATE seoultravel SET 
+ 		hit = hit + 1
+ 		WHERE contentid = #{contentid}
+ 	</update>
+	*/
+	
+	public SeoulVO seoulAttractionDetailData(int contentid);
+	public void seoulAttractionHitIncrement(int contentid);
+	
 }

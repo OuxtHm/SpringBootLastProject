@@ -29,4 +29,5 @@ import com.sist.web.vo.*;
 public interface SeoulService {
 	public List<SeoulVO> seoulListData(Map map);
 	public int seoulTotalPage(int contenttype);
+	public SeoulVO seoulAttractionDetailData(int contentid);
 }

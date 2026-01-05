@@ -52,7 +52,7 @@
 	                    <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
 	                        <!-- Post Thumb -->
 	                        <div class="post-thumb">
-	                        	<a href="/seoul/detail_before?contentid=${vo.contentid }">
+	                        	<a href="/seoul/detail_before?contentid=${vo.contentid }&contenttype=${vo.contenttype}">
 	                            	<img src="${vo.image1 }" style="width: 350px; height: 240px;">
 	                            </a>
 	                        </div>
@@ -85,7 +85,7 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-	                            <a href="/seoul/detail_before?contentid=${vo.contentid }">
+	                            <a href="/seoul/detail_before?contentid=${vo.contentid }&contenttype=${vo.contenttype}">
 	                                <h4 class="post-headline">${vo.title }</h4>
 	                            </a>
 	                        </div>
