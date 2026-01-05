@@ -1,6 +1,6 @@
 package com.sist.web.service;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.stereotype.Service;
 
@@ -15,11 +15,11 @@ public class SeoulServiceImpl implements SeoulService{
 	private final SeoulMapper mapper;
 	
 	@Override
-	public List<SeoulVO> seoulLocationListData(int start) {
-		return mapper.seoulLocationListData(start);
+	public List<SeoulVO> seoulListData(Map map) {
+		return mapper.seoulListData(map);
 	}
 	@Override
-	public int seoulTotalPage() {
-		return mapper.seoulTotalPage();
+	public int seoulTotalPage(int contenttype) {
+		return mapper.seoulTotalPage(contenttype);
 	}
 }

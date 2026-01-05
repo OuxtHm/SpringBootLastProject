@@ -10,16 +10,16 @@ import com.sist.web.vo.*;
 @Repository
 public interface SeoulMapper {
 	/*
-	<select id="seoulLocationListData" resultMap="locationMap" parameterType="int">
- 		SELECT st.no, st.contentid, title, address, image1, hit, msg, restdate, usetime, parking  
- 		FROM seoultravel st JOIN attraction at 
- 		ON st.contentid = at.contentid 
- 		ORDER BY st.no ASC 
+	<select id="seoulListData" resultType="com.sist.web.vo.SeoulVO" parameterType="hashmap">
+ 		SELECT no, contentid, title, address, image1, hit  
+ 		FROM seoultravel 
+ 		WHERE contenttype=#{contenttype}
+ 		ORDER BY no ASC 
  		OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY 
  	</select>
 	*/
-	public List<SeoulVO> seoulLocationListData(int start);
+	public List<SeoulVO> seoulListData(Map map);
 	@Select("SELECT CEIL(COUNT(*) / 12.0) FROM seoultravel "
-			+ "WHERE contenttype=12 ")
-	public int seoulTotalPage();
+			+ "WHERE contenttype=#{contenttype} ")
+	public int seoulTotalPage(int contenttype);
 }

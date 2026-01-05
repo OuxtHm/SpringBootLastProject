@@ -27,6 +27,6 @@ import com.sist.web.vo.*;
 															Jsp
 */
 public interface SeoulService {
-	public List<SeoulVO> seoulLocationListData(int start);
-	public int seoulTotalPage();
+	public List<SeoulVO> seoulListData(Map map);
+	public int seoulTotalPage(int contenttype);
 }
