@@ -24,4 +24,19 @@ public class BusanServiceImpl implements BusanService{
 	public int busanTotalPage(int contenttype) {
 		return mapper.busanTotalPage(contenttype);
 	}
+	
+	@Override
+	public List<BusanVO> busanFindData(Map map) {
+		return mapper.busanFindData(map);
+	}
+	
+	@Override
+	public int busanFindTotalPage(String address) {
+		return mapper.busanFindTotalPage(address);
+	}
+	
+	@Override
+	public List<BusanVO> busanTop4Data() {
+		return mapper.busanTop4Data();
+	}
 }

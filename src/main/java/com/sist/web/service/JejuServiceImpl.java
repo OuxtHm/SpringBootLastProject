@@ -23,4 +23,18 @@ public class JejuServiceImpl implements JejuService{
 	public int jejuTotalPage(int contenttype) {
 		return mapper.jejuTotalPage(contenttype);
 	}
+	
+	@Override
+	public List<JejuVO> jejuFindData(Map map) {
+		return mapper.jejuFindData(map);
+	}
+	
+	@Override
+	public int jejuFindTotalPage(Map map) {
+		return mapper.jejuFindTotalPage(map);
+	}
+	@Override
+	public List<JejuVO> jejuTop4Data() {
+		return mapper.jejuTop4Data();
+	}
 }

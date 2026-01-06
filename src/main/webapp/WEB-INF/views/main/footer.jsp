@@ -27,7 +27,7 @@
                 <div class="col-12">
                     <!-- Copywrite Text -->
                     <div class="copy_right_text text-center">
-                        <p>Kangbuk education center<i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://github.com/OuxtHm" target="_blank">A Class</a></p>
+                        <p>강북쌍용교육센터<i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://github.com/OuxtHm" target="_blank">A반</a></p>
                     </div>
                 </div>
             </div>
