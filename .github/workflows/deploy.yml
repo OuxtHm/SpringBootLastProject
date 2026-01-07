@@ -60,3 +60,4 @@ jobs:
           pkill -f 'java -jar' || true
           nohup java -jar ~/app/SpringBootLastProject-0.0.1-SNAPSHOT.war > log.txt 2>&1 &
         EOF
+    # test
