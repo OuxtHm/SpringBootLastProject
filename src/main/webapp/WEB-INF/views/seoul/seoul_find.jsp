@@ -64,7 +64,7 @@
 	                                <div class="post-author-date-area d-flex">
 	                                    <!-- Post Author -->
 	                                    <div class="post-author">
-	                                        <a href="#"></a>
+	                                        <a href="#">{{vo.address}}</a>
 	                                    </div>
 	                                    <!-- Post Date -->
 	                                    <div class="post-date">

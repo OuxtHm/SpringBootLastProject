@@ -24,7 +24,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumb-title text-center">
-                        <h2>부산 여행 검색</h2>
+                        <h2>제주 여행 검색</h2>
                     </div>
                 </div>
             </div>

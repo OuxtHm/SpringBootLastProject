@@ -39,7 +39,10 @@ public class SeoulServiceImpl implements SeoulService{
 	public List<SeoulVO> seoulTop5Data() {
 		return mapper.seoulTop5Data();
 	}
-	
+	@Override
+	public SeoulVO seoulFestivalDetailData(int contentid) {
+		return mapper.seoulFestivalDetailData(contentid);
+	}
 	// 구현 => mapper
 	// 통합 => service
 	// 브라우저로 전송 : request(model) => Controller

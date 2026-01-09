@@ -20,4 +20,7 @@ public class SeoulVO {
 	private String title, image1, image2, address;
 	private double x, y;
 	private AttractionVO avo;
+	private FoodStoreVO fsvo = new FoodStoreVO();
+	private FestivalVO fvo = new FestivalVO();
+	
 }

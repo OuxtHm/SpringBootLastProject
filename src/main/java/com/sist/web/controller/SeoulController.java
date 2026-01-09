@@ -87,7 +87,7 @@ public class SeoulController {
 			Model model)
 	{
 		String jsp = "";
-		SeoulVO vo = new SeoulVO();
+//		/SeoulVO vo = new SeoulVO();
 		if(contenttype == 12)
 		{
 			jsp = "../seoul/attraction.jsp";
@@ -98,6 +98,8 @@ public class SeoulController {
 		}
 		else if(contenttype == 15)
 		{
+			SeoulVO vo = sService.seoulFestivalDetailData(contentid);
+			model.addAttribute("vo", vo);
 			jsp = "../seoul/festival.jsp";
 		}
 		else if(contenttype == 32)
@@ -112,8 +114,8 @@ public class SeoulController {
 		{
 			jsp = "../seoul/food_store.jsp";
 		}
-		vo = sService.seoulAttractionDetailData(contentid);
-		model.addAttribute("vo", vo);
+		//vo = sService.seoulAttractionDetailData(contentid);
+		//model.addAttribute("vo", vo);
 		model.addAttribute("main_jsp", jsp);
 		return "main/main";
 	}

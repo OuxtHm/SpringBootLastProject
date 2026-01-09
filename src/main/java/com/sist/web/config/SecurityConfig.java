@@ -1,0 +1,121 @@
+package com.sist.web.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.sist.web.security.LoginFailHandler;
+import com.sist.web.security.LoginSuccessHandler;
+
+import lombok.RequiredArgsConstructor;
+
+/*
+	보안 설정
+	
+	요청 = Security FilterChain = 인증 = 인가 = Controller = View
+				|				 |		|권한체크				|
+				설정(인증/인가)		 |							|
+								로그인된 사용자 인지			접근 권한 = > 메뉼를 제한
+					 
+	인증
+		= 로그인 / 아이디, 비밀버호
+			|
+		success => Authentication 객체 생성 => 주요 정보를 저장
+						| 인가
+							hasRole(), authenticated()
+							permitAll
+		
+			-- Security Filter -- Authentication - Authorization - Controller
+				사용자 정의								|
+					|								Session / Cookie
+					|								|			|
+					|								일반 보안		JWT
+				일반 로그인 / 카카오 로그인
+
+*/
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+	private final LoginSuccessHandler loginSuccess;
+	private final LoginFailHandler loginFail;
+	private final DataSource dataSource;
+	
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
+	{
+		http
+		.csrf(csrt -> csrt.disable())
+		.authorizeHttpRequests(auth -> auth
+			.requestMatchers("/","/member/**").permitAll()
+			.requestMatchers("/admin/**").hasRole("ADMIN")
+			.anyRequest().permitAll()
+		)
+		.formLogin(form -> form
+			.loginPage("/member/login")
+			.loginProcessingUrl("/member/login_process")
+			.usernameParameter("userid")
+			.passwordParameter("userpwd")
+			.defaultSuccessUrl("/main", false)
+			.successHandler(loginSuccess)
+			.failureHandler(loginFail)
+			.permitAll()
+		)
+		.rememberMe(remember-> remember
+			.key("my-secret-key")
+			.rememberMeParameter("remember-me")
+			.tokenValiditySeconds(60*60*24)
+			//.userDetailsService(UserDetailsService)
+		)
+		.logout(logout -> logout
+			.logoutUrl("/member/logout")
+			.logoutSuccessUrl("/main")
+			.invalidateHttpSession(true)
+			.deleteCookies("remember-me", "JESSIONID")
+		);
+		
+		return http.build();
+	}
+	
+	// 인증관리자
+	@Bean
+	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder passwordEncoder) throws Exception
+	{
+		
+		AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
+		
+		builder
+			.userDetailsService(jdbcUserDetailsService())
+			.passwordEncoder(passwordEncoder);
+		
+		return builder.build();
+	}
+	
+	@Bean
+	public JdbcUserDetailsManager jdbcUserDetailsService()
+	{
+		JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
+		
+		manager.setUsersByUsernameQuery("SELECT userid as username, userpwd as password, enabled "
+				+ "FROM project_member_2 WHERE userid=?");
+		manager.setAuthoritiesByUsernameQuery("SELECT userid as username, authority "
+				+ "FROM authority_2 WHERE userid=?");
+		
+		return manager;
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+}
