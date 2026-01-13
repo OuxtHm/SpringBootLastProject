@@ -68,7 +68,7 @@
 							<tr>
 								<td width="10%" class="text-center">${vo.no }</td>
 								<td width="45%" class="text-left">
-									<a href="/board/detail?no${vo.no }">${vo.subject }</a>&nbsp;
+									<a href="/board/detail?no=${vo.no }">${vo.subject }</a>&nbsp;
 									<c:if test="${today==vo.dbday }">
 										<sup><img src="/img/new.gif"></sup>
 									</c:if>
