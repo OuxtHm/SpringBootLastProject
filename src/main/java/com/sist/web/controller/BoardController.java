@@ -3,7 +3,6 @@ package com.sist.web.controller;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ import com.sist.web.service.*;
 import com.sist.web.vo.*;
 
 import lombok.RequiredArgsConstructor;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequiredArgsConstructor
