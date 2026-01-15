@@ -92,9 +92,9 @@
                                         </div>
                                     </div>
                                     <a href="#">
-                                        <h2 class="post-headline">Boil The Kettle And Make A Cup Of Tea Folks, This Is Going To Be A Big One!</h2>
+                                        <h2 class="post-headline">CICD 연습중입니다.</h2>
                                     </a>
-                                    <p>Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat.</p>
+                                    <p>CICD 연습중입니다</p>
                                     <a href="#" class="read-more">Continue Reading..</a>
                                 </div>
                             </div>
