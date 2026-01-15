@@ -36,12 +36,12 @@ jobs:
 
       - name: Login to DockerHub
         run: |
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERBUB_USERNAME }}" --password-stdin
 
       - name: Docker
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
+          docker build -t ${{ secrets.DOCKERBUB_USERNAME }}/spring-boot-app:latest .
+          docker push ${{ secrets.DOCKERBUB_USERNAME }}/spring-boot-app:latest
 
       # SSH : 암호화 통신 => 개인 키를 가지고 AWS에 접속
       - name: Add SSH Key
