@@ -63,6 +63,6 @@ jobs:
           ssh ubuntu@43.201.115.160 << 'EOF'
             sudo docker stop spring-app || true
             sudo docker rm spring-app || true
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
-            sudo docker run -d --name spring-app -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
+            sudo docker pull ${{ secrets.DOCKERBUB_USERNAME }}/spring-boot-app:latest
+            sudo docker run -d --name spring-app -p 8080:8080 ${{ secrets.DOCKERBUB_USERNAME }}/spring-boot-app:latest
           EOF
