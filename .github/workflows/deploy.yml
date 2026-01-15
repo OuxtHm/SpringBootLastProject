@@ -61,8 +61,8 @@ jobs:
       - name: Deploy on Server using Docker Hub image
         run: |
           ssh ubuntu@43.201.115.160 << 'EOF'
-            docker stop spring-app || true
-            docker rm spring-app || true
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
-            docker run -d --name spring-app -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
+            sudo docker stop spring-app || true
+            sudo docker rm spring-app || true
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
+            sudo docker run -d --name spring-app -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-app:latest
           EOF
