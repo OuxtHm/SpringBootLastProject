@@ -23,6 +23,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: gradle
 
       # gradlew 권한 설정
       - name: Set gradlew permissions
