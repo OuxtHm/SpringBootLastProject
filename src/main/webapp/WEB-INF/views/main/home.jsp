@@ -92,7 +92,7 @@
                                         </div>
                                     </div>
                                     <a href="#">
-                                        <h2 class="post-headline">CICD 연습중입니다.</h2>
+                                        <h2 class="post-headline">CICD 연습중입니다. CICD 연습중입니다2</h2>
                                     </a>
                                     <p>CICD 연습중입니다</p>
                                     <a href="#" class="read-more">Continue Reading..</a>
