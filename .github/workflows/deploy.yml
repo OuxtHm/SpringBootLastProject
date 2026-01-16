@@ -54,14 +54,14 @@ jobs:
       - name: Add known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -t ed25519 43.201.115.160 >> ~/.ssh/known_hosts
+          ssh-keyscan -t ed25519 15.164.102.126 >> ~/.ssh/known_hosts
 
       # 실행 코드
       # 정지 => docker stop image명
       # 삭제 => docker rm image명
       - name: Deploy on Server using Docker Hub image
         run: |
-          ssh ubuntu@43.201.115.160 << 'EOF'
+          ssh ubuntu@15.164.102.126 << 'EOF'
             sudo docker stop spring-app || true
             sudo docker rm spring-app || true
             sudo docker pull ${{ secrets.DOCKERBUB_USERNAME }}/spring-boot-app:latest
