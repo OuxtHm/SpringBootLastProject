@@ -47,4 +47,9 @@ public class SeoulServiceImpl implements SeoulService{
 	// 통합 => service
 	// 브라우저로 전송 : request(model) => Controller
 	// 					JSON => RestController => ResponseBody
+	
+	@Override
+	public SeoulVO seoulFoodStorelDetailData(int contentid) {
+		return mapper.seoulFoodStorelDetailData(contentid);
+	}
 }

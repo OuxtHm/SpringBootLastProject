@@ -12,8 +12,13 @@ const useCommonsRepleStore = defineStore('commons_reply', {
 		cno: 0,
 		sessionId: '',
 		msg: '',
-		count: 0
+		count: 0,
 		//update관련 
+		msg: '',
+		upReplyNo: null,
+		updateMsg: {},
+		reReplyNo: null,
+		replyMsg: {}
 	}),
 	getters: {
 		//  페이지 출력 
@@ -74,9 +79,36 @@ const useCommonsRepleStore = defineStore('commons_reply', {
 
 			})
 			this.setPageData(res.data)
-		}
+		},
 		// update 
+		toggleUpdate(no, msg) {
+			this.upReplyNo = this.upReplyNo === no ? null : no
+			this.updateMsg[no] = msg
+			this.reReplyNo = null
+		},
+		async replyUpdate(no) {
+			const res = await api.put('/commons/update_vue/', {
+				no: no,
+				cno: this.cno,
+				page: this.curpage,
+				msg: this.updateMsg[no]
+			})
+			this.setPageData(res.data)
+			this.upReplyNo = null
+		},
 		// reply
-
+		toglleReply(no, msg) {
+			this.reReplyNo = this.reReplyNo === no ? null : no
+			//this.replyMsg[no]=msg
+			this.upReplyNo = null
+		},
+		async replyReply(no) {
+			const res = await api.post('/commons/reply_reply_insert_vue', {
+				no: no,
+				cno: this.cno,
+				page: this.curpage,
+				msg: this.updateMsg[no]
+			})
+		}
 	}
 })

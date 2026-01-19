@@ -34,4 +34,5 @@ public interface SeoulService {
 	public int seoulFindTotalPage(String address);
 	public List<SeoulVO> seoulTop5Data();
 	public SeoulVO seoulFestivalDetailData(int contentid);
+	public SeoulVO seoulFoodStorelDetailData(int contentid);
 }
