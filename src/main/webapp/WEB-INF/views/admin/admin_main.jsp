@@ -59,7 +59,7 @@ img#food_poster{
     <section class="archive-area section_padding_80">
        <div class="container">
        		<div class="col-sm-3">
-       			<jsp:include page="../admin/admin_menu.jsp"></jsp:include>
+       			<jsp:include page="../admin/admin_menu.jsp"/>
        		</div>
        		<div class="col-sm-9">
        			<jsp:include page="${admin_jsp}" />
