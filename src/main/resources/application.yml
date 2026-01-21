@@ -1,24 +1,37 @@
-#port => default = 8080이다. => 보안 설정(AWS) : port 허용
-#AWS는 80port만 허용 설정 8080 / 1521 / 3306(MySql, MariaDB) 포트 허용시켜야 한다.
-#MVC 설정
+#port => default 8080 => 보안 설정(AWS) : port 허용 
+# 8080 / 1521 / 3306 (MySql , MariaDB) 
+# MVC 설정 
+server:
+    port: 8080
+    servlet:
+      context-path: /
 spring:
   mvc:
-    view:
-     prefix: /WEB-INF/views/
-     suffix: .jsp
+   view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   datasource:
-    url: jdbc:oracle:thin:@//211.238.142.22:1521/XE
-    username: hr
-    password: happy
-    driver-class-name: oracle.jdbc.OracleDriver
+     url: jdbc:oracle:thin:@//211.238.142.22:1521/XE
+     username: hr
+     password: happy
+     driver-class-name: oracle.jdbc.OracleDriver
   #ai:
     #google:
-     # genai:
+      #genai:
         #api-key: 
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB 
 mybatis:
   type-aliases-package: com.sist.web.vo
   mapper-locations: mybatis/mapper/*.xml
-#MyBatis => 복잡한 SQL => Annotation / XML(JOIN, 동적 쿼리)
-#JPA => JOIN => CRUD
-#WebSocket 설정 / Kafka설정 / MSA 설정
-#Security : 람다식
+
+kma:
+  service-key: "2d4038e3debd41b6c50c6ef42ebe44ee1eaaeb9f3a86151b7db0a2c83e0952ae"
+# 프로시저 / 트리거 / 함수 
+# JPA => JOIN => CRUD 
+# WebSocket 설정 / Kafka설정 / MSA 설정 
+# Security : 람다식 
+ 

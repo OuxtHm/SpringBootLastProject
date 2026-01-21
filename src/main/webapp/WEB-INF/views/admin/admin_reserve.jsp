@@ -31,17 +31,16 @@
 					<td class="text-center">{{vo.no}}</td>
 					<td>{{vo.id}}</td>
 					<td>{{vo.svo.title}}</td>
-					<td class="text-center"><img :src="vo.svo.image1"
-						style="width: 30px; height: 30px"></td>
+					<td class="text-center"><img :src="vo.svo.image1" style="width: 30px; height: 30px"></td>
 					<td class="text-center">{{vo.rday}}</td>
 					<td class="text-center">{{vo.rtime}}</td>
 					<td class="text-center">{{vo.rinwon}}</td>
 					<td class="text-center">{{vo.dbday}}</td>
 					<td class="text-center">
-						<button class="btn-xs btn-danger" v-if="vo.isReserve===0">승인대기</button>
+						<button class="btn-xs btn-danger" v-if="vo.isReserve===0" @click="store.reserveOk(vo.no, vo.id)">승인대기</button>
 						<span class="btn btn-xs btn-default" v-else>승인완료</span>
-						<button class="btn-xs btn-warning" style="margin-left: 2px" v-if="false">취소</button>
-					</th>
+						<button class="btn-xs btn-warning" style="margin-left: 2px" v-if="vo.iscancel" @click="store.reserveDelete(vo.no, id)">취소</button>
+					</td>
 				</tr>
 			</thead>
 		</table>

@@ -15,7 +15,7 @@
 			<li class="list-group-item"><a href="/admin/reserve_list">예약 관리</a></li>
 			<li class="list-group-item"><a href="#">구매 관리</a></li>
 			<li class="list-group-item"><a href="#">회원 관리</a></li>
-			<li class="list-group-item"><a href="#">공지 관리</a></li>
+			<li class="list-group-item"><a href="/admin/notice_list">공지 관리</a></li>
 		</ul>
 	</div>
 </body>
