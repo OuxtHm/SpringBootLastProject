@@ -38,19 +38,16 @@ public class CommonsReplyServiceImpl implements CommonsReplyService{
 
 	@Override
 	public List<CommonsReplyVO> commonsReplyListData(int cno, int start) {
-		// TODO Auto-generated method stub
 		return mapper.commonsReplyListData(cno, start);
 	}
 
 	@Override
 	public int commonsReplyTotalPage(int cno) {
-		// TODO Auto-generated method stub
 		return mapper.commonsReplyTotalPage(cno);
 	}
 
 	@Override
 	public void commonsReplyInsert(CommonsReplyVO vo) {
-		// TODO Auto-generated method stub
 		mapper.commonsReplyInsert(vo);
 	}
 
@@ -58,7 +55,6 @@ public class CommonsReplyServiceImpl implements CommonsReplyService{
 	
 	@Override
 	public void commonsMsgUpdate(CommonsReplyVO vo) {
-		// TODO Auto-generated method stub
 		mapper.commonsMsgUpdate(vo);
 	}
 
@@ -67,13 +63,9 @@ public class CommonsReplyServiceImpl implements CommonsReplyService{
 		// TODO Auto-generated method stub
 		CommonsReplyVO vo=mapper.commonsInfoData(no);
 		if(vo.getGroup_step()==0)
-		{
 			mapper.commonsAllDelete(vo.getGroup_id());
-		}
 		else 
-		{
 			mapper.commonsMyDelete(no);
-		}
 	}
 
 	/*
@@ -86,8 +78,7 @@ public class CommonsReplyServiceImpl implements CommonsReplyService{
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void commonsReplyReplyInsert(CommonsReplyVO vo) {
-		// TODO Auto-generated method stub
+	public String commonsReplyReplyInsert(CommonsReplyVO vo) {
 		int pno=vo.getNo();
 		CommonsReplyVO pvo=mapper.commonsReplyParentData(pno);
 		mapper.commonsGroupStepIncrement(pvo);
@@ -98,6 +89,8 @@ public class CommonsReplyServiceImpl implements CommonsReplyService{
 		
 		mapper.commonsReplyReplyInsert(vo);
 		mapper.commonsDepthIncrement(pno);
+		
+		return pvo.getId();
 	}
 
 	

@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>상세보기 및 지도</title>
 <link rel="stylesheet" href="/css/map.css" type="text/css">
+<link rel="stylesheet" href="/css/toast.css" type="text/css">
 <script>
     const SESSION_ID='${sessionScope.userid}'
     const CNO='${param.contentid}'
@@ -152,7 +153,7 @@
                         </nav>
                     </div>
                 </div>
-
+                <jsp:include page="../commons/toast.jsp"></jsp:include>
                 <script>
                     const {onMounted, ref, createApp} = Vue
                     const {createPinia} = Pinia
@@ -163,6 +164,7 @@
                             onMounted(() => {
                                 store.sessionId = SESSION_ID
                                 store.commonsListData(CNO)
+                                store.connect(SESSION_ID)
                             })
                             return { store, msgRef }
                         }

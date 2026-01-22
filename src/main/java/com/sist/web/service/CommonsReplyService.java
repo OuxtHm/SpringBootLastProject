@@ -43,6 +43,6 @@ public interface CommonsReplyService {
 	  //@Delete("DELETE FROM commonsMyReply WHERE no=#{no}")
 	  //public void commonsMyDelete(int no);
 	  //public void commonsDelete(int no);
-	  public void commonsReplyReplyInsert(CommonsReplyVO vo);
+	  public String commonsReplyReplyInsert(CommonsReplyVO vo);
 	  
 }

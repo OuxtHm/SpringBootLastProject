@@ -16,6 +16,8 @@ public class MainController {
 	private final BusanService bService;
 	private final SeoulService sService;
 	private final JejuService jService;
+	private final RealFindDataService rService;
+
 	
 	@GetMapping("/main")
 	public String main_page(Model model)
@@ -40,7 +42,10 @@ public class MainController {
 			String[] datas = vo.getAddress().split(" ");
 			vo.setAddress(datas[0] + " " + datas[1]);
 		}
+	
+		List<RealFindDataVO> rList = rService.realFindDataAllData();
 		
+		model.addAttribute("rList", rList);
 		model.addAttribute("jList", jList);
 		model.addAttribute("sList", sList);
 		model.addAttribute("bList", bList);
